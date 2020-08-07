@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://ultraq.net.nz./thymeleaf/layout"
+      layout:decorate="~{layouts/main-layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>student-list</title>
+</head>
+<body>
+        <div class="container" layout:fragment="content">
+            <div style="margin-top: 1em; margin-bottom: 1em;" class="container">
+                <div>
+			<span style="font-size: 2em; color: #32a5e7;">Students in our
+				Data</span> <span style="float: right;"> <a
+                        class="btn btn-outline-success btn-lg"
+                        href="/student/new">Add a new student</a>
+			</span>
+                </div>
+                <!-- Search panel -->
+                <form id="searchStudentForm" method="get"
+                      action="/eregistrar/student/search">
+                    <div style="margin-top: 1em;" class="row">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="searchString"
+                                       name="searchString"
+                                       placeholder="Enter a string to search for books"
+                                       th:value="${searchString}" autofocus />
+                                <div class="input-group-append">
+                                    <button id="btnSubmit" type="submit"
+                                            class="btn btn-outline-success">Search</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div style="font-size: 1em">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">studentId</th>
+                            <th scope="col">Student Number</th>
+                            <th scope="col">FirstName</th>
+                            <th scope="col">MiddleName</th>
+                            <th scope="col">LastName</th>
+                            <th scope="col">CGPA</th>
+                            <th scope="col">Is International</th>
+                            <th scope="col">Date Enrollment</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="student,iterStat : ${students}">
+                            <!--th:onclick="@{document.location='/elibrary/book/edit/{bookId}'(bookId=${book.bookId})}" -->
+                            <th scope="row" th:text="${iterStat.count}+${'.'}"></th>
+                            <td th:text="${student.studentNumber}"></td>
+                            <td th:text="${student.firstName}"></td>
+                            <td th:text="${student.middleName}"></td>
+                            <td th:text="${student.lastName}"></td>
+                            <td th:text="${student.cgpa}"></td>
+                            <td th:text="${student.isInternational}"></td>
+                            <td th:text="${student.enrollmentDate}"></td>
+<!--                            <td th:text="${student.getEnrollmentDate()}"></td>-->
+                            <td><a
+                                    th:href="@{'/student/edit/{studentId}'(studentId=${student.studentId})}">Edit</a></td>
+                            <td><a
+
+                                        th:href="@{'/student/delete/{studentId}'(studentId=${student.studentId})}">Delete</a>
+
+                                <!--                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">-->
+                                <!--                            Launch demo modal--> <!--                        </button>-->
+                            </td>
+                        </tr>
+                        <tr th:if="${studentCount < 1}">
+                            <td colspan="6" th:align="center">No student found</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="confirmDeleteBookModal" tabindex="-1"
+                 role="dialog" aria-labelledby="exampleModalCenterTitle"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Confirm
+                                Delete</h5>
+                            <button type="button" class="close" data-dismiss="modal"
+                                    aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Are you sure you wish to delete this
+                            student data?</div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                    data-dismiss="modal">No</button>
+                            <button type="button" class="btn btn-primary">Yes</button>
+                        </div>
+                    </div>
+                </div>
+            </div></div>
+
+
+
+
+</body>
+</html>
