@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html data-layout-decorator="layouts/main-layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Homib-TCMS</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+
+    <div style="padding-top:1em;" class="container">
+        <div style="margin-bottom: 1em;">
+            <span style="font-size: 2em; color: #32a5e7;">New Load Form</span>
+        </div>
+
+        <form id="newLoadForm" method="post" action="/list/load/new" th:object="${load}">
+            <fieldset>
+                <input type="hidden" name="loadId" th:value="${load.loadId}"/>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="loadDate">Load Date</label>
+                        <span th:if="${#fields.hasErrors('loadDate')}" th:errors="*{loadDate}"
+                              class="alert alert-danger"></span>
+                        <input id="loadDate" name="loadDate" type="date" class="form-control" th:value="${load.loadDate}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="loadTime">Load Time</label>
+                                <span th:if="${#fields.hasErrors('loadTime')}" th:errors="*{loadTime}"
+                                      class="alert alert-danger"></span>
+                                <input id="loadTime" name="loadTime" type="text" class="form-control"
+                                       th:value="${load.loadTime}" autofocus required>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="weight">Weight</label>
+                                <span th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}"
+                                      class="alert alert-danger"></span>
+                                <input id="weight" name="weight" type="text" class="form-control"
+                                       th:value="${load.weight}" autofocus required>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"
+                                  class="alert alert-danger"></span>
+                            <input id="price" name="price" type="text" class="form-control"
+                                   th:value="${load.price}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="pickupFrom">Pick Up From</label>
+                            <span th:if="${#fields.hasErrors('pickupFrom')}" th:errors="*{pickupFrom}"
+                                  class="alert alert-danger"></span>
+                            <input id="pickupFrom" name="pickupFrom" type="text" class="form-control"
+                                   th:value="${load.pickupFrom}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="deliverTO">Deliver To</label>
+                            <span th:if="${#fields.hasErrors('deliverTO')}" th:errors="*{deliverTO}"
+                                  class="alert alert-danger">
+                            </span>
+                            <input id="deliverTO" name="deliverTO" type="text" class="form-control"
+                                   th:value="${load.deliverTO}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <select name="loadType"
+                                id="loadType" type="text"
+                                class="form-control" th:value="${load.loadType}">
+                            <option value="">Load Type</option>
+                            <option value="Dry">Dry</option>
+                            <option value="Frozen">Frozen</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="float:right;">
+                    <a href="/load/new" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+                    <button id="btnSubmit" type="submit" class="btn btn-outline-success">Save Load</button>
+                </div>
+            </fieldset>
+        </form>
+    </div><br><br>
+</th:block>
+</body>
+</html>

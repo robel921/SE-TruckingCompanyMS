@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/slate/bootstrap.min.css"
+          integrity="sha384-idNH3UIOiZbCf8jxqu4iExnH34y5UovfW/Mg8T5WfNvoJolDvknoNqR69V2OexgF" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Homib-TCMS</title>
+</head>
+<body>
+<header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="/">Homib Trucking Company</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/login/contact/page">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login/about/page">About us</a>
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<h3 >SIGN IN</h3>
+<hr/>
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="card border-secondary mb-4" style="max-width: 60rem;">
+                <div class="card-header">Use your Account</div>
+                <div class="card-body">
+                    <h4 class="card-title">Sign In with your Account</h4>
+                    <p class="card-text">
+                        Enter your Username and Password below, to sign in.
+                    </p>
+                    <div>
+                        <form name="formLogin" th:action="@{/admin}" method="post">
+                            <div th:if="${param.error}" class="alert alert-dismissible alert-danger">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                Invalid username and/or password.
+                            </div>
+                            <div th:if="${param.logout}" class="alert alert-dismissible alert-primary">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                You have been signed out.
+                            </div>
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input id="username" name="username" type="text" class="form-control" autofocus="autofocus"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input id="password" name="password" type="password" class="form-control"/>
+                            </div>
+                            <div style="float:right;">
+                                <a href="/secured/home/login" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+                                <button id="btnSubmit" type="submit" class="btn btn-outline-success">Sign In</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<div style=" position:fixed;bottom: 0; width: 100%;height: 50px;
+    line-height: 50px; background-color: #000052;">
+    <span class="text-muted">Homib Trucking Company : : : All Right Reserved</span>
+    <span style="float:right;" class="text-muted">&copy; August 2020</span>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
+</body>
+</html>

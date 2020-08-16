@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html data-layout-decorator="layouts/main-layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Homib-TCMS</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+
+    <div style="padding-top:1em;" class="container">
+        <div style="margin-bottom: 1em;">
+            <span style="font-size: 2em; color: #32a5e7;">New Driver Form</span>
+        </div>
+
+        <form id="newDriverForm" method="post" action="/tcms/driver/new" th:object="${user}">
+            <fieldset>
+                <input type="hidden" name="userId" th:value="${user.userId}"/>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="licenseNumber">License Number</label>
+                        <span th:if="${#fields.hasErrors('licenseNumber')}" th:errors="*{licenseNumber}"
+                              class="alert alert-danger"></span>
+                        <input id="licenseNumber" name="licenseNumber" type="text" class="form-control" th:value="${user.licenseNumber}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
+                                      class="alert alert-danger"></span>
+                                <input id="firstName" name="firstName" type="text" class="form-control"
+                                       th:value="${user.firstName}" autofocus required>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="middleName">Middle Name</label>
+                                <span th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}"
+                                      class="alert alert-danger"></span>
+                                <input id="middleName" name="middleName" type="text" class="form-control"
+                                       th:value="${user.middleName}" autofocus required>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                                  class="alert alert-danger"></span>
+                            <input id="lastName" name="lastName" type="text" class="form-control"
+                                   th:value="${user.lastName}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="dateofbirth">Date Of Birth</label>
+                            <span th:if="${#fields.hasErrors('dateofbirth')}" th:errors="*{dateofbirth}"
+                                  class="alert alert-danger"></span>
+                            <input id="dateofbirth" name="dateofbirth" type="date" class="form-control"
+                                   th:value="${user.dateofbirth}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="hiredate">Date Of Hire</label>
+                            <span th:if="${#fields.hasErrors('hiredate')}" th:errors="*{hiredate}"
+                                  class="alert alert-danger">
+                            </span>
+                            <input id="hiredate" name="hiredate" type="date" class="form-control"
+                                   th:value="${user.hiredate}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number</label>
+                            <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"
+                                  class="alert alert-danger">
+                            </span>
+                            <input id="phoneNumber" name="phoneNumber" type="text" class="form-control"
+                                   th:value="${user.phoneNumber}">
+                        </div>
+                    </div>
+                </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                                          class="alert alert-danger">
+                                                </span>
+                                    <input id="email" name="email" type="text" class="form-control"
+                                           th:value="${user.email}">
+                                </div>
+                            </div>
+                        </div>
+
+                <div style="float:right;">
+                    <a href="/driver/list" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+                    <button id="btnSubmit" type="submit" class="btn btn-outline-success">Save Driver</button>
+                </div>
+            </fieldset>
+        </form>
+    </div><br><br>
+</th:block>
+</body>
+</html>

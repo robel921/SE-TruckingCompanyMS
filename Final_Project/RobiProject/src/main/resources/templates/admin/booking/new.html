@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html data-layout-decorator="layouts/main-layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Homib-TCMS</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+
+    <div style="padding-top:1em;" class="container">
+        <div style="margin-bottom: 1em;">
+            <span style="font-size: 2em; color: #32a5e7;">New Booking Form</span>
+        </div>
+
+        <form id="bookingForm" method="post" action="/tcms/booking/saved" th:object="${booking}">
+            <fieldset>
+                <input type="hidden" name="bookingId" th:value="${booking.bookingId}"/>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="loadNumber">Load Number</label>
+                        <span th:if="${#fields.hasErrors('loadNumber')}" th:errors="*{loadNumber}"
+                              class="alert alert-danger"></span>
+                        <input id="loadNumber" name="loadNumber" type="text" class="form-control"
+                               th:value="${booking.loadNumber}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
+                                      class="alert alert-danger"></span>
+                                <input id="firstName" name="firstName" type="text" class="form-control"
+                                       th:value="${booking.firstName}" autofocus required>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                                      class="alert alert-danger"></span>
+                                <input id="lastName" name="lastName" type="text" class="form-control"
+                                       th:value="${booking.lastName}" autofocus required>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number</label>
+                            <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"
+                                  class="alert alert-danger"></span>
+                            <input id="phoneNumber" name="phoneNumber" type="text" class="form-control"
+                                   th:value="${booking.phoneNumber}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                                  class="alert alert-danger"></span>
+                            <input id="email" name="email" type="text" class="form-control"
+                                   th:value="${booking.email}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="load">Load Id</label>
+                        <span th:if="${#fields.hasErrors('load')}" th:errors="*{load}"
+                              class="alert alert-danger"></span>
+                        <select name="loadId" id="load" class="form-control" required="required">
+                            <option value="loadId">Select Load Id</option>
+                            <option th:each="load : ${loads}" th:value="${booking.load}"
+                                    th:text="${load.loadId}"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="userId">User Id</label>
+                        <span th:if="${#fields.hasErrors('user')}" th:errors="*{user}"
+                              class="alert alert-danger"></span>
+                        <select name="userId" id="userId" class="form-control" required="required">
+                            <option value="userId">Select User Id</option>
+                            <option th:each="user, iterStat : ${users}" th:value="${booking.setUser(user)}"
+                                    th:text="${user.userId}"></option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <!--                <div class="row">-->
+                <!--                    <div class="col-md-4">-->
+                <!--                        <label for="loadId">Load Id</label>-->
+                <!--                        <select name="loadId"-->
+                <!--                                id="loadId" type="text"-->
+                <!--                                class="form-control" th:value="${loadId}">-->
+                <!--                            <option th:each="l, iterStat : ${loads}" th:value="${l.loadId}" th:text="${l.loadId}"></option>-->
+                <!--                        </select>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--                <div class="row">-->
+                <!--                    <div class="col-md-4">-->
+                <!--                        <div class="form-group">-->
+                <!--                            <label for="userId">User Id</label>-->
+                <!--                        <select name="userId"-->
+                <!--                                id="userId" type="text"-->
+                <!--                                class="form-control" th:value="${users}">-->
+                <!--                            <option th:each="user, iterStat : ${users}" th:value="${user.userId}" th:text="${user.userId}"></option>-->
+                <!--                        </select>-->
+                <!--                    </div>-->
+                <!--                    </div></div>-->
+
+                <div style="float:right;">
+                    <a href="/booking/list" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+                    <button id="btnSubmit" type="submit" class="btn btn-outline-success">Save Load</button>
+                </div>
+                <!--                <input type="hidden" name="userId" th:value="${booking.user.userId}"/>-->
+                <!--                <input type="hidden" name="loadId" th:value="${booking.load.loadId}"/>-->
+            </fieldset>
+        </form>
+    </div>
+    <br><br>
+</th:block>
+</body>
+</html>

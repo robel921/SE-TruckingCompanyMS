@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html data-layout-decorator="layouts/main-layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Homib-TCMS</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div class="col-xs-4 text-left">
+        <h1>CONTACT INFORMATION</h1>
+    </div><br></br>
+    <h4 style="  text-decoration-color: #000052; background: cyan"; >This page contains information about out Company.</h4>
+    <img src="/static/images/contact.png" th:src="@{/images/contact.jpg}" style=" width: 50% ; height: 200px; border-radius: 5px">
+
+    <!--    <img src="/static/images/contact.jpg" th:src="@{/images/contact.jpg}" style=" width: 150% ; height: 4200px; border-radius: 5px">-->
+
+
+
+</th:block>
+</body>
+</html>

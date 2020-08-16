@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html data-layout-decorator="layouts/main-layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Homib-TCMS</title>
+</head>
+<body>
+<body>
+<th:block layout:fragment="content">
+
+    <div style="padding-top:1em;" class="container">
+        <div style="margin-bottom: 1em;">
+            <span style="font-size: 2em; color: #32a5e7;">Edit Booking data with Booking: [[${booking.bookingId}]]</span>
+        </div>
+
+        <form id="newBookingForm" method="post" action="/tcms/booking/edit/" th:object="${booking}">
+            <fieldset>
+                <input type="hidden" name="bookingId" th:value="${booking.bookingId}"/>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="loadNumber">Load Number</label>
+                        <span th:if="${#fields.hasErrors('loadNumber')}" th:errors="*{loadNumber}"
+                              class="alert alert-danger"></span>
+                        <input id="loadNumber" name="loadNumber" type="text" class="form-control" th:value="${booking.loadNumber}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
+                                      class="alert alert-danger"></span>
+                                <input id="firstName" name="firstName" type="text" class="form-control"
+                                       th:value="${booking.firstName}" autofocus required>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                                      class="alert alert-danger"></span>
+                                <input id="lastName" name="lastName" type="text" class="form-control"
+                                       th:value="${booking.lastName}" autofocus required>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number</label>
+                            <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"
+                                  class="alert alert-danger"></span>
+                            <input id="phoneNumber" name="phoneNumber" type="text" class="form-control"
+                                   th:value="${booking.phoneNumber}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                                  class="alert alert-danger"></span>
+                            <input id="email" name="email" type="text" class="form-control"
+                                   th:value="${booking.email}">
+                        </div>
+                    </div>
+                </div>
+                <div style="float:right;">
+                    <a href="/booking/list" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+                    <button id="btnSubmit" type="submit" class="btn btn-outline-success">Save Load</button>
+                </div>
+            </fieldset>
+        </form>
+    </div><br><br>
+</th:block>
+</body>
+</html>

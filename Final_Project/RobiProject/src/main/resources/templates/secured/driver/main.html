@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html data-layout-decorator="layouts/driver-layout"
+      xmlns:th="http://www.thymeleaf.org">
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org"-->
+<!--      xmlns:layout="http://ultraq.net.nz./thymeleaf/layout"-->
+<!--      layout:decorate="~{layouts/main-layout}">-->
+<head>
+    <meta charset="UTF-8">
+    <title>Homib-TCMS</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div style="padding-top:1em;" class="container">
+    <!--<div class="container" layout:fragment="content">-->
+    <div class="bk">
+        <h1 style="text-align: center; color: orange">Welcome to Homibb Trucking Company Management System</h1>
+        <img src="/static/images/truck1.jpg" th:src="@{/images/truck1.jpg}" style="width:700px;
+       height:400px; padding-left: 10px;border-radius: 5px">
+
+
+    </div>
+  </div>
+</th:block>
+<!--</div>-->
+</body>
+</html>

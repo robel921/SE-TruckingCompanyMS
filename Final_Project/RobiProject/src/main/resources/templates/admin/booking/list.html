@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html data-layout-decorator="layouts/main-layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Homib-TCMS</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div class="container" style="margin-top: 1em; margin-bottom: 1em;">
+        <div> <span style="font-size: 2em; color: orange">Available Booking</span>
+            <span><a style="float: right; color: cyan" href="/booking/new">ADD NEW Booking</a></span>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">No.</th>
+                <th scope="col">Load Number</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Email</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="booking, iterStat : ${book}">
+                <th scope="row" th:text="${iterStat.count}+${'.'}"></th>
+                <td th:text="${booking.loadNumber}"></td>
+                <td th:text="${booking.firstName}"></td>
+                <td th:text="${booking.lastName}"></td>
+                <td th:text="${booking.phoneNumber}"></td>
+                <td th:text="${booking.email}"></td>
+
+                <td><a th:href="@{'/tcms/booking/edit/{bookingId}'(bookingId=${booking.bookingId})}">Edit</a></td>
+                <td><a th:href="@{'/tcms/booking/delete/{bookingId}'(bookingId=${booking.bookingId})}">Delete</a></tr>
+
+            <tr th:if="${bookingCount < 1}">
+                <td colspan="6" th:align="center">No Booking has found</td>
+            </tr>
+            </tbody>
+
+
+        </table>
+
+    </div>
+</th:block>
+</body>
+</html>
